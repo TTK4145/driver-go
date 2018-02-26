@@ -1,10 +1,12 @@
 package main
 
 import (
-	"fmt"
+	"github.com/op/go-logging"
 
-	"github.com/TTK4145/driver-go/elevio"
+	"github.com/aasmune/driver-go/elevio"
 )
+
+var log = logging.MustGetLogger("main")
 
 func main() {
 
@@ -28,11 +30,11 @@ func main() {
 	for {
 		select {
 		case a := <-drv_buttons:
-			fmt.Printf("%+v\n", a)
+			log.Infof("%+v\n", a)
 			elevio.SetButtonLamp(a.Button, a.Floor, true)
 
 		case a := <-drv_floors:
-			fmt.Printf("%+v\n", a)
+			log.Infof("%+v\n", a)
 			if a == numFloors-1 {
 				d = elevio.MD_Down
 			} else if a == 0 {
@@ -41,7 +43,7 @@ func main() {
 			elevio.SetMotorDirection(d)
 
 		case a := <-drv_obstr:
-			fmt.Printf("%+v\n", a)
+			log.Infof("%+v\n", a)
 			if a {
 				elevio.SetMotorDirection(elevio.MD_Stop)
 			} else {
@@ -49,7 +51,7 @@ func main() {
 			}
 
 		case a := <-drv_stop:
-			fmt.Printf("%+v\n", a)
+			log.Infof("%+v\n", a)
 			for f := 0; f < numFloors; f++ {
 				for b := elevio.ButtonType(0); b < 3; b++ {
 					elevio.SetButtonLamp(b, f, false)
