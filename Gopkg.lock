@@ -2,14 +2,14 @@
 
 
 [[projects]]
+  branch = "master"
   name = "github.com/op/go-logging"
   packages = ["."]
-  revision = "b2cb9fa56473e98db8caba80237377e83fe44db5"
-  version = "v1"
+  revision = "970db520ece77730c7e4724c61121037378659d9"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "21af9886094186c21f1f16896c21540313d8c4e698e64a095e0d2f8763011103"
+  inputs-digest = "8c9c0bf174377596b1d462fa44a3cab15ed2d63a76a6510d6283fc2d164a4732"
   solver-name = "gps-cdcl"
   solver-version = 1
